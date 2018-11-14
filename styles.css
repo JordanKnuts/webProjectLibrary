@@ -82,3 +82,39 @@ textarea {
 .success {
     color: green;
 }
+
+.cardprofile {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.titleprofil {
+  color: grey;
+  font-size: 18px;
+}
+
+.buttonprofil {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  position: relative;
+}
+
+aprofil {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+buttonprofil:hover, a:hover {
+  opacity: 0.7;
+}
