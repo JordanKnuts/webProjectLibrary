@@ -39,6 +39,7 @@ if (isset($_POST['validate'])) {
             
             add_user($username, $password, $fullname, $email, $birthdate,$role);
             echo"YESaii";
+            echo my_hash('THEO');
             
             /*log_user($username);*/
         }
