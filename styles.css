@@ -4,7 +4,7 @@
 }
 
 body {
-    width       :700px;
+    width       :100%;
     margin      :20px auto;
     background  :white;
     border      :1px solid #888;
@@ -117,4 +117,8 @@ aprofil {
 
 buttonprofil:hover, a:hover {
   opacity: 0.7;
+}
+
+.memberlist {
+    width:350px;
 }
