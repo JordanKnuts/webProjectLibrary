@@ -42,15 +42,23 @@
         <ul class="menuhtml">
     
     <li><a href="profile.php">Home</a></li>
-    <li><a href="members.php">Members</a></li>
+    
+<?php
+
+if (isset($_SESSION['role']) AND $_SESSION['role'] != 'admin' || $_SESSION['role'] != 'manager') {
+    echo('<li><a href="members.php">Members</a></li>');
+}
+    
+?>  
     <li><a href="friends.php">Friends</a></li>
     <li><a href="messages.php">Messages</a></li>
     <li><a href="edit_profile.php">Edit Profile</a></li>
-    <li><a href="logout.php">Log Out</a></li>
+    <li><a href="index.php">Log Out</a></li>
 
 </ul>
 
     </body>
 </html>
+
 
 

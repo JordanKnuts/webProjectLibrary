@@ -29,7 +29,7 @@ if(!$profil){
 <html>
     <head>
         <title>  <?php echo $username; ?> </title>
-        <?php include('menu.html');?>
+        <?php include('menu.php');?>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="styles.css" rel="stylesheet" type="text/css"/>

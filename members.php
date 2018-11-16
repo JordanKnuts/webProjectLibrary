@@ -29,8 +29,8 @@ $members = get_all_users();
         </style>
     </head>
     <body>
-        <div class="title"> Other Members</div>
-        <?php include('menu.html'); ?>
+        <div class="title"> Members</div>
+        <?php include('menu.php'); ?>
         <div class ="main">
             <table>
                 <tr>
