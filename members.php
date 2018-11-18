@@ -99,7 +99,7 @@ $members = get_all_users();
                             ARE YOU SURE YOU WANT TO DELETE ?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancel"> Cancel</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancel"> CANCEL</button>
                             <button type="button" class="btn btn-primary " id="delete">DELETE</button>
                         </div>
                     </div>
