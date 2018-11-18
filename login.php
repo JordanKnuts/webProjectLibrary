@@ -9,6 +9,7 @@ if(isset($_POST["username"]) && isset($_POST["password"]) ){
     $username = sanitize($_POST['username']);
     $password = sanitize($_POST['password']);
     
+    
     $member = get_user($username);
     if($member){
         if(check_password($password, $member['password'])){

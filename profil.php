@@ -2,6 +2,7 @@
 require_once "functions.php";
 check_login();
 
+
 if(isset($_GET["username"])){
     $username= sanitize($_GET["username"]);
 
@@ -12,6 +13,7 @@ else{
     $username=$user;
 
 }
+
 
 $profil = get_user($username);
 
@@ -29,7 +31,15 @@ if(!$profil){
 <html>
     <head>
         <title>  <?php echo $username; ?> </title>
-        <?php include('menu.php');?>
+        
+        <?php
+        if (isset($profil['role']) AND $profil['role'] == "admin" || $profil['role'] == "manager") {
+            include('menu_admin.php');
+        }
+        else{
+            include('menu_users.php');
+        }
+        ?>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="styles.css" rel="stylesheet" type="text/css"/>

@@ -2,7 +2,12 @@
 <html>
     <head>
         <title> Menu</title>
-    <link href="styles.css" rel="stylesheet" type="text/css"/>
+        <link href="styles.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
+
         <style>
             body {margin:0;}
 
@@ -36,26 +41,16 @@
             .active {
                 background-color: #4CAF50;
             }
-            </style>
+        </style>
     </head>
     <body>
         <ul class="menuhtml">
-    
-    <li><a href="profile.php">Home</a></li>
-    
-<?php
 
-if (isset($_SESSION['role']) AND $_SESSION['role'] != 'admin' || $_SESSION['role'] != 'manager') {
-    echo('<li><a href="members.php">Members</a></li>');
-}
-    
-?>  
-    <li><a href="friends.php">Friends</a></li>
-    <li><a href="messages.php">Messages</a></li>
-    <li><a href="edit_profile.php">Edit Profile</a></li>
-    <li><a href="index.php">Log Out</a></li>
+            <li><a href="profile.php">Home </a></li>
+            <li><a href="members.php">Members</a></li>
+            <li><a href="index.php">Log Out</a></li>
 
-</ul>
+        </ul>
 
     </body>
 </html>
