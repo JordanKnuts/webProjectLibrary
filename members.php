@@ -3,7 +3,6 @@ require_once "functions.php";
 $pdoc = connect();
 check_login();
 $members = get_all_users();
-
 ?>
 
 <!DOCTYPE html>
@@ -37,29 +36,29 @@ $members = get_all_users();
     <body>
         <div class="title"> Members</div>
         <?php include('menu_admin.php'); ?>
-        
-            <table>
-                <tr>
-                    
-                    <th>User Name</th>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Birth Date</th>
-                    <th>Role</th>
-                    <th>Action</th>
-                </tr>   
 
-                <?php
-                foreach ($members as $member) {
-                    $name = $member['username'];
-                    $fullname = $member['fullname'];
-                    $email = $member['email'];
-                    $birthdate = $member['birthdate'];
-                    $role = $member['role'];
-                   
-                    
-                    $profil = get_user($user);
-                    echo "
+        <table>
+            <tr>
+
+                <th>User Name</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Birth Date</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>   
+
+            <?php
+            foreach ($members as $member) {
+                $name = $member['username'];
+                $fullname = $member['fullname'];
+                $email = $member['email'];
+                $birthdate = $member['birthdate'];
+                $role = $member['role'];
+
+
+                $profil = get_user($user);
+                echo "
                    <tr>
                     
                     <td><a href=profile.php?username=$name>$name</a>  </td>
@@ -72,27 +71,50 @@ $members = get_all_users();
                     
                     
                 ";
-                  echo"<td>";
-                  if(isset($profil['role']) AND $profil['role'] == 'admin') {
-                         echo "<a href=delete.php class='btn btn-danger'>Delete</a>
-                         <a href=edit.php class='btn btn-primary'>Edit</a></td>";
-                        }
-                         else{
-                         echo"<a href=edit.php class='btn btn-primary'>Edit</a></td>";
-                            }
-                        
-                  echo"</td>";
-                      echo '</tr>';
+                echo"<td>";
+                if (isset($profil['role']) AND $profil['role'] == 'admin') {
+                    echo "<a href=edit.php class='btn btn-primary'>Edit</a>
+                         <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#ConfirmModal'>
+                Delete
+            </button>";
+                } else {
+                    echo"<a href=edit.php class='btn btn-primary'>Edit</a></td>";
                 }
-                ?>
 
+                
+                
+            }
+            ?>
+            
+            <div class="modal fade" id="ConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ConfirmModalLabel">CONFIRMATION</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ARE YOU SURE YOU WANT TO DELETE ?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancel"> Cancel</button>
+                            <button type="button" class="btn btn-primary " id="delete">DELETE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            </table>
+            <?php 
+            echo"</td>";
+            echo "</tr>";  ?>
+        </table>
         <div>
             <a href=edit.php class='btn btn-success'>Add</a>
         </div>
-      </body>
-      
+    </body>
+
 </html>
 
 
