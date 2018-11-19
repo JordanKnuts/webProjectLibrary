@@ -8,11 +8,11 @@ body {
     margin      :20px auto;
     background  :white;
     border      :1px solid #888;
-    background-color: black;
+    background-color: white;
 }
 
 html {
-    background-color: black;
+    background-color: white;
 }
 
 .main {
@@ -113,7 +113,7 @@ textarea {
 aprofil {
   text-decoration: none;
   font-size: 22px;
-  color: black;
+  color: white;
 }
 
 buttonprofil:hover, a:hover {

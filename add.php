@@ -1,21 +1,20 @@
 <?php
 require_once "functions.php";
 $pdo = connect();
+check_login();
 $username = '';
 $email = '';
 $fullname = '';
-$password = '';
-$password_confirm = '';
 $birthdate='';
 $role='';
+$profil = get_user($user);
 
 if (isset($_POST['validate'])) {
-    if(isset($_POST['username']) && isset($_POST['fullname']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['password_confirm']) && isset($_POST['role'])  ){
+    if(isset($_POST['username']) && isset($_POST['fullname']) && isset($_POST['email']) && isset($_POST['role'])  ){
          
-        $password= sanitize($_POST['password']);
+        $password = '123';
         $fullname = sanitize($_POST['fullname']);
         $birthdate=sanitize($_POST['birthdate']);
-        $password_confim = sanitize($_POST['password_confirm']);
         $email = sanitize($_POST['email']);
         $username = sanitize($_POST['username']);
         $role = sanitize($_POST['role']);
@@ -36,10 +35,10 @@ if (isset($_POST['validate'])) {
         }*/
 
         if (!isset($errors)) {
-            
+             
             add_user($username, my_hash($password), $fullname, $email, $birthdate,$role);
             //var_dump(add_user($username, my_hash($password), $fullname, $email, $birthdate,$role));
-            log_user($username);
+            redirect('members.php');
         }
     }
 }
@@ -60,9 +59,9 @@ if (isset($_POST['validate'])) {
             <a href="index.php">Home</a>
         </div>
         <div class="main">
-            Please enter your details to sign up :
+            Please enter details to add a new user :
             <br><br>
-            <form action="signup.php" method="post">
+            <form action="add.php" method="post" >
                 <table>
                     <tr>
                         <td>User Name:</td>
@@ -79,24 +78,24 @@ if (isset($_POST['validate'])) {
                     <td>Birthdate:</td>
                     <td> <input id="birthdate" name="birthdate" type="date" value=""> </td>
                     <tr>
-                        <td>Role:</td>
-                        <td><select id="role" name="role">
-                                <option value="member">Member</option>
-                                
-                                
-                            </select></td>
+                        <?php if (isset($profil['role']) AND $profil['role'] == 'admin') { ?>
+                            <td>Role:</td>
+                            <td><select id="role" name="role">
+                                    <option value="member">Member</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="manager">Manager</option>
+
+                                </select>
+                            </td>
+                        <?php } else {  ?>
+                            <input type="hidden" name="role" value="Member">
+                        <?php } ?>   
+
                     </tr>
-                    <tr>
-                        <td>Password:</td>
-                        <td><input id="password" name="password" type="password" value=""></td>
-                    </tr>
+                   
                     
-                    <tr>
-                        <td>Confirm Password:</td>
-                        <td><input id="password_confirm" name="password_confirm" type="password" value=""></td>
-                    </tr>
                 </table>
-                <input type="submit" name="validate" value="Sign Up" >
+                <input type="submit" name="validate" value="ADD" >
             </form>
             <?php
             if (isset($errors)) {

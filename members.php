@@ -3,8 +3,12 @@ require_once "functions.php";
 $pdoc = connect();
 check_login();
 $members = get_all_users();
-?>
 
+
+if (isset($_POST['delete'])){
+$id=($_POST['id']);
+delete_user($id);
+}?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,7 +40,7 @@ $members = get_all_users();
     <body>
         <div class="title"> Members</div>
         <?php include('menu_admin.php'); ?>
-
+        <form action="members.php" method="POST">
         <table>
             <tr>
 
@@ -87,6 +91,8 @@ $members = get_all_users();
             }
             ?>
             
+            
+            
             <div class="modal fade" id="ConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -100,15 +106,13 @@ $members = get_all_users();
                             ARE YOU SURE YOU WANT TO DELETE ?
                         </div>
                         <div class="modal-footer">
+                            
+                            <input type="hidden" name="id" value="<?= $id ?>">
+                            
                             <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancel"> CANCEL</button>
-                            <a href="delete.php" type="button" class="btn btn-primary "  name="delete" id="delete">DELETE</a>
-                            <?php
-                         
-                            if (isset($_POST['delete'])){
-                                
-                                delete_user($id);
-                            }
-                            ?>
+                            
+                            <button type="input" class="btn btn-primary "  name="delete" id="delete" value="">DELETE</button>
+                            
                         </div>
                     </div>
                 </div>
@@ -117,12 +121,13 @@ $members = get_all_users();
             <?php 
             echo"</td>";
             echo "</tr>";  ?>
+       
         </table>
         <div>
-            <a href=edit.php class='btn btn-success'>Add</a>
+            <a href=add.php class='btn btn-success'>Add</a>
         </div>
     </body>
-
+</form>
 </html>
 
 
