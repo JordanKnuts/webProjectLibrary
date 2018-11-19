@@ -1,3 +1,38 @@
+<<<<<<< HEAD
+=======
+<?php
+require_once 'functions.php';
+$password='';
+$username='';
+
+
+if(isset($_POST["username"]) && isset($_POST["password"]) ){
+    
+    $username = sanitize($_POST['username']);
+    $password = sanitize($_POST['password']);
+    
+    
+    $member = get_user($username);
+    if($member){
+        if(check_password($password, $member['password'])){
+            log_user($username);
+        }
+        else{
+            $error="Wrong password. Try Again!";
+        }
+    }else {
+            $error="Username do not exists.";
+    }
+    
+    
+}
+
+
+
+?>
+
+
+>>>>>>> origin/second
 
 <!DOCTYPE html>
 <html>

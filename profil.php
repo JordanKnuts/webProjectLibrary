@@ -2,9 +2,11 @@
 require_once "functions.php";
 check_login();
 
+
+
 if(isset($_GET["username"])){
     $username= sanitize($_GET["username"]);
-
+    
     
 
 }
@@ -13,7 +15,10 @@ else{
 
 }
 
+
 $profil = get_user($username);
+$role=$profil['role'];
+
 
 if(!$profil){
     abort("Can't find '$username' .");
@@ -29,7 +34,15 @@ if(!$profil){
 <html>
     <head>
         <title>  <?php echo $username; ?> </title>
-        <?php include('menu.html');?>
+        
+        <?php
+        if (isset($profil['role']) AND $profil['role'] == "admin" || $profil['role'] == "manager") {
+            include('menu_admin.php');
+        }
+        else{
+            include('menu_users.php');
+        }
+        ?>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="styles.css" rel="stylesheet" type="text/css"/>
@@ -40,7 +53,7 @@ if(!$profil){
 <div class="cardprofile">
     <img src="imgs/profile.png" alt="<?php echo $username; ?>"  style="width:100%">
   <h1> <?php echo $username; ?> </h1>
-  <p class="title">CEO & Founder</p>
+  <p class="title"><?php echo $role; ?></p>
   <p>Brussels University</p>
   
  <p>  <button class="buttonprofil">Contact &#9993 </button></p>
