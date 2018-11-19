@@ -12,10 +12,10 @@ $role='';
 if (isset($_POST['validate'])) {
     if(isset($_POST['username']) && isset($_POST['fullname']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['password_confirm']) && isset($_POST['role'])  ){
          
-        $password= sanitize($_POST['password']);
+        $password = sanitize($_POST['password']);
         $fullname = sanitize($_POST['fullname']);
         $birthdate=sanitize($_POST['birthdate']);
-        $password_confim = sanitize($_POST['password_confirm']);
+        $password_confirm = sanitize($_POST['password_confirm']);
         $email = sanitize($_POST['email']);
         $username = sanitize($_POST['username']);
         $role = sanitize($_POST['role']);
@@ -31,15 +31,15 @@ if (isset($_POST['validate'])) {
         if (strlen(trim($username)) < 3) {
             $errors[] = "Le username doit contenir 3 caractères au minimum";
         }
-        /*if (my_hash($password) != my_hash($password_confirm)) {
+        if ($password != $password_confirm) {
             $errors[] = "Les mots de passe doivent être identiques";
-        }*/
+        }
 
         if (!isset($errors)) {
             
-            add_user($username, my_hash($password), $fullname, $email, $birthdate,$role);
-            
-            log_user($username);
+            add_user($username, $password, $fullname, $email, $birthdate,$role);
+            echo"YESaii";
+            /*log_user($username);*/
         }
     }
 }

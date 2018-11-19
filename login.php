@@ -1,34 +1,3 @@
-<?php
-require_once 'functions.php';
-$password='';
-$username='';
-
-
-if(isset($_POST["username"]) && isset($_POST["password"]) ){
-    
-    $username = sanitize($_POST['username']);
-    $password = sanitize($_POST['password']);
-    
-    $member = get_user($username);
-    if($member){
-        if(check_password($password, $member['password'])){
-            log_user($username);
-        }
-        else{
-            $error="Wrong password. Try Again!";
-        }
-    }else {
-            $error="Username do not exists.";
-    }
-    
-    
-}
-
-
-
-?>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -48,7 +17,7 @@ if(isset($_POST["username"]) && isset($_POST["password"]) ){
             <form action="login.php" method="post">
                 <table>
                     <tr>
-                        <td>Username:</td>
+                        <td>User name:</td>
                         <td><input id="username"  name="username" type="text" value=""></td>
                     </tr>
                     <tr>
