@@ -50,6 +50,7 @@ $members = get_all_users();
 
             <?php
             foreach ($members as $member) {
+                $id= $member['id'];
                 $name = $member['username'];
                 $fullname = $member['fullname'];
                 $email = $member['email'];
@@ -61,7 +62,7 @@ $members = get_all_users();
                 echo "
                    <tr>
                     
-                    <td><a href=profile.php?username=$name>$name</a>  </td>
+                    <td><a href=profil.php?username=$name>$name</a>  </td>
                     <td>$fullname</td>                          
                     <td>$email</td>
                     <td>$birthdate</td>
@@ -73,12 +74,12 @@ $members = get_all_users();
                 ";
                 echo"<td>";
                 if (isset($profil['role']) AND $profil['role'] == 'admin') {
-                    echo "<a href=edit.php class='btn btn-primary'>Edit</a>
+                    echo "<a href=edit.php?username=$name class='btn btn-primary'>Edit</a>
                          <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#ConfirmModal'>
                 Delete
             </button>";
                 } else {
-                    echo"<a href=edit.php class='btn btn-primary'>Edit</a></td>";
+                    echo"<a href=edit.php?username=$name class='btn btn-primary'>Edit</a></td>";
                 }
 
                 

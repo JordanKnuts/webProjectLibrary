@@ -46,7 +46,7 @@
     <body>
         <ul class="menuhtml">
 
-            <li><a href="profile.php">Home </a></li>
+            <li><a href="profil.php">Home </a></li>
             <li><a href="members.php">Members</a></li>
             <li><a href="index.php">Log Out</a></li>
 

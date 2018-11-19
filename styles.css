@@ -8,10 +8,11 @@ body {
     margin      :20px auto;
     background  :white;
     border      :1px solid #888;
+    background-color: black;
 }
 
 html {
-    background  :#fff
+    background-color: black;
 }
 
 .main {
