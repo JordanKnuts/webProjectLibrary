@@ -38,8 +38,9 @@ delete_user($id);
         </style>
     </head>
     <body>
-        <div class="title"> Members</div>
         <?php include('menu_admin.php'); ?>
+        <div class="title"> Members</div>
+        
         <form action="members.php" method="POST">
         <table>
             <tr>
@@ -77,7 +78,7 @@ delete_user($id);
                     
                 ";
                 echo"<td>";
-                if (isset($profil['role']) AND $profil['role'] == 'admin') {
+                if (isset($profil['role']) AND $profil['role'] == 'admin' AND $member['role'] != 'admin') {
                     echo "<a href=edit.php?username=$name class='btn btn-primary'>Edit</a>
                          <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#ConfirmModal'>
                 Delete
@@ -111,7 +112,7 @@ delete_user($id);
                             
                             <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancel"> CANCEL</button>
                             
-                            <button type="input" class="btn btn-primary "  name="delete" id="delete" value="">DELETE</button>
+                            <button type="input" class="btn btn-danger "  name="delete" id="delete" value="">DELETE</button>
                             
                         </div>
                     </div>

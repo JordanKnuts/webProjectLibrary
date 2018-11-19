@@ -70,9 +70,10 @@ if (isset($_POST['validate'])) {
         <link href="styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <?php include('menu_admin.php'); ?>
         <div class="title">Edit</div>
         <div class="menu">
-            <a href="index.php">Home</a>
+            
         </div>
         <div class="main">
 

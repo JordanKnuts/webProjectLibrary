@@ -42,7 +42,7 @@
         <ul class="menuhtml">
     
     <li><a href="profil.php">Home </a></li>
-    <li><a href="index.php">Log Out</a></li>
+    <li><a href="logout.php">Log Out</a></li>
 
 </ul>
 
