@@ -92,7 +92,7 @@ $members = get_all_users();
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="ConfirmModalLabel">CONFIRMATION</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -101,7 +101,14 @@ $members = get_all_users();
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancel"> CANCEL</button>
-                            <button type="button" class="btn btn-primary " id="delete">DELETE</button>
+                            <a href="delete.php" type="button" class="btn btn-primary "  name="delete" id="delete">DELETE</a>
+                            <?php
+                         
+                            if (isset($_POST['delete'])){
+                                
+                                delete_user($id);
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
