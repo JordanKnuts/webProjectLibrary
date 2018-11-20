@@ -86,8 +86,8 @@ if (isset($_POST['delete'])) {
         }
         h2{
             text-align: center;
-            background-color: #ffffff;
-
+            color:white;
+            text-decoration:white;
             opacity: 0.5;
         }
 
@@ -179,7 +179,7 @@ if (isset($_POST['delete'])) {
 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancel"> CANCEL</button>
 
-                        <button type="input" class="btn btn-danger "  name="delete" id="delete" value="">DELETE</button>
+                        <button type="input" class="btn btn-danger" name="delete" id="delete" value="">DELETE</button>
                         
 
                     </div>

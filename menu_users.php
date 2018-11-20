@@ -12,6 +12,7 @@
                 padding: 0;
                 overflow: hidden;
                 background-color: #333;
+                background: transparent;
                 position: center;
                 top: 0;
                 width: 100%;

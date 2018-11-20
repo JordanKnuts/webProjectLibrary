@@ -1,0 +1,59 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Log In</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="styles.css" rel="stylesheet" type="text/css"/>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
+    </head>
+    <style>
+
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700);
+        @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+        
+        
+
+
+        [class*=underlay] {
+            left: 0;
+            min-height: 100%;
+            min-width: 100%;
+            position: fixed;
+            top: 0;
+        }
+        .underlay-photo {
+/*            animation: hue-rotate 6s infinite;*/
+            background-image: url(imgs/books.jpg);
+            background-size: cover;
+            -webkit-filter: grayscale(20%);
+            z-index: -1;
+        }
+        .underlay-black {
+            background: rgba(0,0,0,0.7);
+            z-index: -1;
+        }
+
+        @keyframes hue-rotate {
+            from {
+                -webkit-filter: grayscale(30%) hue-rotate(0deg);
+            }
+            to {
+                -webkit-filter: grayscale(30%) hue-rotate(360deg);
+            }
+        }
+        
+    </style>
+    <body>
+
+        <div class="underlay-photo"></div>
+        <div class="underlay-black"></div> 
+    </body>
+
+    
+</html>
