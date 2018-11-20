@@ -33,11 +33,13 @@ form * {
 .title {
     text-align  :center;    
     background  :white;
+    opacity: 0.7;
     color       :black;
     font-family :helvetica;
     font-size   :20pt;
     font-weight :bold;
     padding     :14px;
+    
 }
 
 .menu a {
