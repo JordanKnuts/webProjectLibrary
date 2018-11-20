@@ -180,6 +180,7 @@ if (isset($_POST['delete'])) {
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancel"> CANCEL</button>
 
                         <button type="input" class="btn btn-danger "  name="delete" id="delete" value="">DELETE</button>
+                        
 
                     </div>
                 </div>
