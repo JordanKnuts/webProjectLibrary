@@ -37,6 +37,8 @@ if (isset($profil['role']) AND $profil['role'] == "admin" || $profil['role'] == 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="styles.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
@@ -77,7 +79,7 @@ if (isset($profil['role']) AND $profil['role'] == "admin" || $profil['role'] == 
         table {
             font-family: arial, sans-serif;
             font-weight: 1000;
-            border-collapse: collapse;
+            border:30px;
             width: 100%;
             height: 100%;
             -webkit-filter: grayscale(30%);
@@ -110,13 +112,13 @@ if (isset($profil['role']) AND $profil['role'] == "admin" || $profil['role'] == 
 
 
     </style>
-    <body class='table'>
+    <body class="table">
         <form class="login-form" >
             <h4 style="text-align:center"><?php echo $username; ?> profile</h4>
             <div class="cardprofile">
                 <img src="imgs/profile.png" alt="<?php echo $username; ?>"  style="width:90%">
                 <h2> <?php echo $username; ?> </h2>
-                <p class="title"><?php echo $role; ?></p>
+                <p class="title"><i class="fa fa-id-badge">&nbsp</i><?php echo $role; ?></p>
                 <h2>Brussels University</h2>
             </div>
         

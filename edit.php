@@ -1,11 +1,13 @@
 <?php
 require_once "functions.php";
+$pdo = connect();
 check_login();
-$name = '';
+$username = '';
 $email = '';
 $fullname = '';
 $birthdate = '';
 $role = '';
+$profil = get_user($user);
 
 if (isset($_GET['username'])) {
     $profil = get_user($_GET['username']);
@@ -17,20 +19,18 @@ if (isset($_GET['username'])) {
     $role = $profil['role'];
 }
 
-$profil = get_user($user);
 
 
 if (isset($_POST['validate'])) {
-    if (isset($_POST['username']) && isset($_POST['fullname']) && isset($_POST['email']) && isset($_POST['birthdate'])) {
+    if (isset($_POST['username']) && isset($_POST['fullname']) && isset($_POST['email']) && isset($_POST['role'])) {
 
-
+       
         $fullname = sanitize($_POST['fullname']);
         $birthdate = sanitize($_POST['birthdate']);
         $email = sanitize($_POST['email']);
         $username = sanitize($_POST['username']);
         $id = sanitize($_POST['id']);
         $role = sanitize($_POST['role']);
-
 
 
 
@@ -44,15 +44,17 @@ if (isset($_POST['validate'])) {
             $errors[] = "Le username doit contenir 3 caractères au minimum";
         }
 
-
         if (!isset($errors)) {
 
-            uptdate_user($id, $username, $fullname, $email, $birthdate, $role);
-            redirect('members.php');
+            uptdate_user($username, $fullname, $email, $birthdate, $role);
+            //var_dump(add_user($username, my_hash($password), $fullname, $email, $birthdate,$role));
+            //redirect('members.php');
+            echo 'YES';
         }
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -60,6 +62,8 @@ if (isset($_POST['validate'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="styles.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
@@ -198,8 +202,11 @@ if (isset($_POST['validate'])) {
         td{
             color: white;
 
-
         }
+
+
+
+
 
         @keyframes hue-rotate {
             from {
@@ -211,28 +218,31 @@ if (isset($_POST['validate'])) {
         }
 
     </style>
-    <body>
-        <?php include('menu_admin.php'); ?>
-        <form class="login-form" action="edit.php" method="post">
+    <body >
+        
+        &nbsp &nbsp<a href="members.php" ><i class="fa fa-arrow-left" style="font-size:45px;color:white"></i></a>
+
+
+        <form class="login-form" action="add.php" method="post">
+            
+
 
 
             <table>
                 <tr>
-                        <td>User Name:</td>
-                        <td><input class="login-username" id="username" name="username" type="text" value="<?php echo $name; ?>"></td>
-                    </tr>
-                    <tr>
-                        <td>Full Name:</td>
-                        <td><input class="login-username"   id="fullname" name="fullname" type="text" value="<?php echo $fullname; ?>"></td>
-                    </tr>
-                    <tr>
-                        <td>Email:</td>
-                        <td><input class="login-username"  id="email" name="email" type="email" value="<?php echo $email; ?>"</td>
-                    </tr>
-                    <tr>
-                        <td>Birthdate:</td>
-                        <td> <input class="login-username" id="birthdate" name="birthdate" type="date" value="<?php echo $birthdate; ?>"> </td>
-                    </tr>
+                    <td>User Name:</td>
+                    <td><input id="username" name="username" type="text" class="login-username" value="<?php echo $name; ?>"></td>
+                </tr>
+                <tr>
+                    <td>Full Name:</td>
+                    <td><input id="fullname" name="fullname" type="text" class="login-username"  value="<?php echo $fullname; ?>"</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input id="email" name="email" type="email" class="login-username"  value="<?php echo $email; ?>"></td>
+                </tr>
+                <td>Birthdate:</td>
+                <td> <input id="birthdate" name="birthdate" type="date" class="login-username" value="<?php echo $birthdate; ?>" > </td>
                 <tr>
                     <?php if (isset($profil['role']) AND $profil['role'] == 'admin') { ?>
                         <td>Role:</td>
@@ -248,16 +258,14 @@ if (isset($_POST['validate'])) {
                 <?php } ?>   
 
                 </tr>
-                <form class="login-form">
-                    
-                </form>
+
+
             </table>
             <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <input type="submit" name="validate" value="Edit" class="login-submit" />
             
-            <input type="submit" name="validate" value="Add" class="login-submit" />
-            
-        </form>
-        <?php
+            </form>
+            <?php
             if (isset($errors)) {
                 echo "<div class='errors'>
                           <br><br><p>Veuillez corriger les erreurs suivantes :</p>
@@ -268,6 +276,7 @@ if (isset($_POST['validate'])) {
                 echo '</ul> </div>';
             }
             ?>
+        
 
 
 

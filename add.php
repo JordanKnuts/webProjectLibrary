@@ -48,6 +48,8 @@ if (isset($_POST['validate'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="styles.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
@@ -186,8 +188,11 @@ if (isset($_POST['validate'])) {
         td{
             color: white;
 
-
         }
+
+
+
+
 
         @keyframes hue-rotate {
             from {
@@ -199,8 +204,14 @@ if (isset($_POST['validate'])) {
         }
 
     </style>
-    <body>
+    <body >
+        
+        &nbsp &nbsp<a href="members.php" ><i class="fa fa-arrow-left" style="font-size:45px;color:white"></i></a>
+
+
         <form class="login-form" action="add.php" method="post">
+            
+
 
 
             <table>

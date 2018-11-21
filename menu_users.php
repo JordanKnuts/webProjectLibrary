@@ -3,6 +3,7 @@
     <head>
         <title> Menu</title>
     <link href="styles.css" rel="stylesheet" type="text/css"/>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css'>
         <style>
             body {margin:0;}
 
@@ -42,8 +43,8 @@
     <body>
         <ul class="menuhtml">
     
-    <li><a href="profil.php">Home </a></li>
-    <li><a href="logout.php">Log Out</a></li>
+    <li><a href="profil.php"><i class='fas fa-home' style='font-size:20px;color:white'></i> &nbsp Home </a></li>
+    <li><a href="logout.php"><i class="fa fa-sign-out" style="font-size:20px;color:white"></i> &nbsp Log Out</a></li>
 
 </ul>
 

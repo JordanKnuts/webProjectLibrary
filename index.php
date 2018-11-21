@@ -35,6 +35,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="styles.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" >
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
@@ -184,10 +185,18 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 
     </style>
     <body>
+        
+        
         <form class="login-form" action="index.php" method="post">
-            <p class="login-text">
+                 
+            <p class="login-text"> <i class='fas fa-book-open' style='font-size:65px;color:white'></i></p>
+            <p class="login-text"> WELCOME </p>
+            
+            <br>
+            <br>
+            <br>
+          
 
-            </p>
             <input id="username"  name="username" type="text" class="login-username" autofocus="true" required="true" placeholder="Username" />
             <input id="password" name="password" type="password" class="login-password" required="true" placeholder="Password" />
 
@@ -195,7 +204,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 
 
             <form class="login-form">
-                <input type="submit" name="Login" value="Login" class="login-submit" />
+                <input type="submit" name="Login" value="Login" class="login-submit" &#xf2f6;/>
                 <a href="signup.php" name="Signup" value="Sign Up" class="login-submit" >Sign Up</a>
                 <?php
                 if (isset($error)) {
