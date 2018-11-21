@@ -109,20 +109,25 @@ if (isset($profil['role']) AND $profil['role'] == "admin" || $profil['role'] == 
             text-decoration:white;
             opacity: 0.5;
         }
+        cardprofile{
+         border:300px;
+         color:black;
+        }
 
 
     </style>
     <body class="table">
         <form class="login-form" >
-            <h4 style="text-align:center"><?php echo $username; ?> profile</h4>
+            
             <div class="cardprofile">
+                <h4 style=""><?php echo $username; ?> profil</h4>
                 <img src="imgs/profile.png" alt="<?php echo $username; ?>"  style="width:90%">
                 <h2> <?php echo $username; ?> </h2>
                 <p class="title"><i class="fa fa-id-badge">&nbsp</i><?php echo $role; ?></p>
                 <h2>Brussels University</h2>
             </div>
         
-<!--                <p                          >  <button class="buttonprofil">Contact &#9993 </button></p>-->
+<!--                <p><button class="buttonprofil">Contact &#9993 </button></p>-->
             
         </form>
         <div class="underlay-photo"></div>

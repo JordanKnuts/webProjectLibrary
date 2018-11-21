@@ -46,10 +46,10 @@ if (isset($_POST['validate'])) {
 
         if (!isset($errors)) {
 
-            uptdate_user($username, $fullname, $email, $birthdate, $role);
-            //var_dump(add_user($username, my_hash($password), $fullname, $email, $birthdate,$role));
-            //redirect('members.php');
-            echo 'YES';
+            uptdate_user($id,$username, $fullname, $email, $birthdate, $role);
+            
+            redirect('members.php');
+            
         }
     }
 }
@@ -223,7 +223,7 @@ if (isset($_POST['validate'])) {
         &nbsp &nbsp<a href="members.php" ><i class="fa fa-arrow-left" style="font-size:45px;color:white"></i></a>
 
 
-        <form class="login-form" action="add.php" method="post">
+        <form class="login-form" action="edit.php" method="post">
             
 
 
@@ -231,7 +231,7 @@ if (isset($_POST['validate'])) {
             <table>
                 <tr>
                     <td>User Name:</td>
-                    <td><input id="username" name="username" type="text" class="login-username" value="<?php echo $name; ?>"></td>
+                    <td><input id="username" name="username" type="text" class="login-username" value="<?php echo $username; ?>"></td>
                 </tr>
                 <tr>
                     <td>Full Name:</td>

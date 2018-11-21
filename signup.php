@@ -31,7 +31,7 @@ if (isset($_POST['validate'])) {
         if (strlen(trim($username)) < 3) {
             $errors[] = "Le username doit contenir 3 caractères au minimum";
         }
-        if (my_hash($password) != my_hash($password_confirm)) {
+        if (($password) != ($password_confirm)) {
           $errors[] = "Les mots de passe doivent être identiques";
           } 
 
@@ -68,7 +68,7 @@ if (isset($_POST['validate'])) {
             font-family: 'Open Sans';
             font-weight: 100;
             display: flex;
-            overflow: hidden;
+            
         }
         input {
             ::-webkit-input-placeholder {

@@ -7,8 +7,21 @@ $members = get_all_users();
 
 if (isset($_POST['delete'])) {
     $id = ($_POST['id']);
+    
+    if(count_admin()<1){
+        abort('Il doit rester un administrateur au minimum');
+    }else if($id == $user['id']){
+        abort('On ne peut delete son propre compte');
+    }
+    else{
     delete_user($id);
+    redirect('members.php');
+    
+    }
+   
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -19,12 +32,14 @@ if (isset($_POST['delete'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="styles.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" >
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
-    </head>
-    <style>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+
+        <style>
+    
+    
 
         @import url(https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700);
         @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
@@ -59,7 +74,7 @@ if (isset($_POST['delete'])) {
         }
         table {
             font-family: arial, sans-serif;
-            font-weight: 1000;
+            font-weight: 50 px;
             border-collapse: collapse;
             width: 100%;
             height: 100%;
@@ -85,13 +100,7 @@ if (isset($_POST['delete'])) {
             border: 1px solid #dddddd;
 
 
-        }
-        h2{
-            text-align: center;
-            color:white;
-            text-decoration:white;
-            opacity: 0.5;
-        }
+        
         .colname{
             border: 10px solid #dddddd;
             text-align: left;
@@ -103,6 +112,8 @@ if (isset($_POST['delete'])) {
 
 
     </style>
+    </head>
+    
     <body class="table">
         <?php include('menu_admin.php'); ?>
         
@@ -111,7 +122,7 @@ if (isset($_POST['delete'])) {
         <div >
             
             <form action="members.php" method="POST" class="">
-                <h2>Members</h2>
+                <h2  style="color:white ; text-align: center"  >Members</h2>
                 <table class="" >
                     <tr class="colname">
 
@@ -134,6 +145,7 @@ if (isset($_POST['delete'])) {
 
 
                         $profil = get_user($user);
+                        //count_admin($members);
                         echo "
                    <tr>
                     
@@ -145,7 +157,7 @@ if (isset($_POST['delete'])) {
     
                 ";
                         echo"<td>";
-                        if (isset($profil['role']) AND $profil['role'] == 'admin' AND $member['role'] != 'admin') {
+                        if (isset($profil['role']) AND $profil['role'] == 'admin' ) {
                             echo "<a href=edit.php?username=$name class='btn btn-primary'>Edit</a>
                          <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#ConfirmModal'>
                 Delete
@@ -167,8 +179,8 @@ if (isset($_POST['delete'])) {
 
 
 
-            </form>
-            <a href=add.php class='btn btn-success' >Add</a>
+            
+            <a  href=add.php class='btn btn-success' style="margin-top: 15px; text-align: ">Add</a>
         </div>
 
         <div class="modal fade" id="ConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -191,7 +203,7 @@ if (isset($_POST['delete'])) {
 
                         <button type="input" class="btn btn-danger" name="delete" id="delete" value="">DELETE</button>
                         
-
+        <?php echo '</form>' ?>
                     </div>
                 </div>
             </div>

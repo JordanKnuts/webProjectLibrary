@@ -85,6 +85,9 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
             margin: auto;
             max-width: 50%;
             padding: .5rem;
+            display: flex;
+            flex-direction: column;
+            
         }
         .login-text {
             /*            //background: hsl(40,30,60);
@@ -151,6 +154,17 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
                 transition: 250ms background ease-in;
             }
         }
+        .login-signup{
+            border: 1px solid white;
+            background: transparent;
+            color: white;
+            text-decoration:none ;
+            padding: .25rem;
+            margin: 1rem auto;
+            
+            
+            
+        }
 
 
 
@@ -204,8 +218,8 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 
 
             <form class="login-form">
-                <input type="submit" name="Login" value="Login" class="login-submit" &#xf2f6;/>
-                <a href="signup.php" name="Signup" value="Sign Up" class="login-submit" >Sign Up</a>
+                <input type="submit" name="Login" value="Login" class="login-submit" />
+                <a href="signup.php" name="Signup" value="Sign Up" class="login-signup" >Sign Up</a>
                 <?php
                 if (isset($error)) {
                     echo "<div class='errors'><br><br>$error</div>";
