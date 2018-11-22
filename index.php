@@ -52,7 +52,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
             font-family: 'Open Sans';
             font-weight: 100;
             display: flex;
-            overflow: hidden;
+            
         }
         input {
             ::-webkit-input-placeholder {
@@ -200,16 +200,17 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     </style>
     <body>
         
-        
+       
         <form class="login-form" action="index.php" method="post">
-                 
+                
             <p class="login-text"> <i class='fas fa-book-open' style='font-size:65px;color:white'></i></p>
             <p class="login-text"> WELCOME </p>
             
-            <br>
-            <br>
-            <br>
-          
+             <?php
+                if (isset($error)) {
+                    echo "<div class='errors'><br><br>$error</div>";
+                }
+                ?>
 
             <input id="username"  name="username" type="text" class="login-username" autofocus="true" required="true" placeholder="Username" />
             <input id="password" name="password" type="password" class="login-password" required="true" placeholder="Password" />
@@ -220,11 +221,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
             <form class="login-form">
                 <input type="submit" name="Login" value="Login" class="login-submit" />
                 <a href="signup.php" name="Signup" value="Sign Up" class="login-signup" >Sign Up</a>
-                <?php
-                if (isset($error)) {
-                    echo "<div class='errors'><br><br>$error</div>";
-                }
-                ?>
+                
             </form>  
 
         </form>

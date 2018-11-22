@@ -7,10 +7,11 @@ $email = '';
 $fullname = '';
 $birthdate = '';
 $role = '';
-$profil = get_user($user);
+$control = get_user($user);
 
 if (isset($_GET['username'])) {
     $profil = get_user($_GET['username']);
+    $username=$profil['username'];
     $id = $profil['id'];
     $name = $profil['username'];
     $fullname = $profil['fullname'];
@@ -244,7 +245,7 @@ if (isset($_POST['validate'])) {
                 <td>Birthdate:</td>
                 <td> <input id="birthdate" name="birthdate" type="date" class="login-username" value="<?php echo $birthdate; ?>" > </td>
                 <tr>
-                    <?php if (isset($profil['role']) AND $profil['role'] == 'admin') { ?>
+                    <?php if (isset($control['role']) AND $control['role'] == 'admin') { ?>
                         <td>Role:</td>
                         <td><select id="role" name="role">
                                 <option value="member">Member</option>

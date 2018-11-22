@@ -15,7 +15,7 @@ if (isset($_POST['validate'])) {
         $password = sanitize($_POST['password']);
         $fullname = sanitize($_POST['fullname']);
         $birthdate = sanitize($_POST['birthdate']);
-        $password_confim = sanitize($_POST['password_confirm']);
+        $password_confirm = sanitize($_POST['password_confirm']);
         $email = sanitize($_POST['email']);
         $username = sanitize($_POST['username']);
         $role = sanitize($_POST['role']);
@@ -31,9 +31,11 @@ if (isset($_POST['validate'])) {
         if (strlen(trim($username)) < 3) {
             $errors[] = "Le username doit contenir 3 caractères au minimum";
         }
-        if (($password) != ($password_confirm)) {
+        if ($password !== $password_confirm) {
           $errors[] = "Les mots de passe doivent être identiques";
+          
           } 
+          
 
         if (!isset($errors)) {
 

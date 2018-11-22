@@ -11,6 +11,7 @@ if (isset($_GET["username"])) {
 }
 
 
+
 $profil = get_user($username);
 $role = $profil['role'];
 
@@ -22,12 +23,6 @@ if (!$profil) {
 //     $description=$profil["profil"];
 //
 //}
-
-if (isset($profil['role']) AND $profil['role'] == "admin" || $profil['role'] == "manager") {
-    include('menu_admin.php');
-} else {
-    include('menu_users.php');
-}
 ?>
 
 <!DOCTYPE html>
@@ -110,31 +105,43 @@ if (isset($profil['role']) AND $profil['role'] == "admin" || $profil['role'] == 
             opacity: 0.5;
         }
         cardprofile{
-         border:300px;
-         color:black;
+            border:300px;
+            color:black;
         }
 
 
     </style>
-    <body class="table">
-        <form class="login-form" >
+    <body  >
+        <div>
+            <?php
+            if (isset($profil['role']) AND $profil['role'] == "admin" || $profil['role'] == "manager") {
+                include('menu_admin.php');
+            } else {
+                include('menu_users.php');
+            }
+            ?>
+        </div>
             
-            <div class="cardprofile">
-                <h4 style=""><?php echo $username; ?> profil</h4>
-                <img src="imgs/profile.png" alt="<?php echo $username; ?>"  style="width:90%">
-                <h2> <?php echo $username; ?> </h2>
-                <p class="title"><i class="fa fa-id-badge">&nbsp</i><?php echo $role; ?></p>
-                <h2>Brussels University</h2>
-            </div>
-        
+        <div class="table"> 
+            <form class="login-form"  >
+
+                <div class="cardprofile "  >
+                    <h4 style="margin-top:80px"><?php echo $username; ?> profil</h4>
+                    <img src="imgs/profile.png" alt="<?php echo $username; ?>"  style="width:90%">
+                    <h2 > <?php echo $username; ?> </h2>
+                    <p class="title"><i class="fa fa-id-badge">&nbsp</i><?php echo $role; ?></p>
+                    <h2>Brussels University</h2>
+                </div>
+
 <!--                <p><button class="buttonprofil">Contact &#9993 </button></p>-->
-            
-        </form>
-        <div class="underlay-photo"></div>
-        <div class="underlay-black"></div> 
+
+            </form>
+            <div class="underlay-photo"></div>
+            <div class="underlay-black"></div> 
+        </div>
     </body>
     <footer>
-        
+
     </footer>
 
 
