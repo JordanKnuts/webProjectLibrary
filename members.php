@@ -1,22 +1,39 @@
 <?php
 require_once "functions.php";
-$pdoc = connect();
+
+$pdo = connect();
 check_login();
 $members = get_all_users();
 
 
 if (isset($_POST['delete'])) {
-    $id = ($_POST['id']);
+//   var_dump($_POST);
+   
+//  var_dump(count_admin());
+   $idDel = ($_POST['delete']);
+//   var_dump ($id);
+    
 
-    if (count_admin() < 1) {
+    if (count_admin() == '1' && $member['role']=='admin') {
         abort('Il doit rester un administrateur au minimum');
-    } else if ($id == $user['id']) {
+    } else if (($_POST['delete']) == $id) {
         abort('On ne peut delete son propre compte');
     } else {
-        delete_user($id);
+        delete_user($idDel);
         redirect('members.php');
     }
 }
+
+if (isset($_GET["username"])) {
+    $username = sanitize($_GET["username"]);
+} else {
+    $username = $user;
+}
+$profil = get_user($username);
+if($profil['role'] === 'member'){
+    redirect('profil.php');
+}
+$idUser=$profil["id"];
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +46,7 @@ if (isset($_POST['delete'])) {
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" >
         <!--        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-              <!--        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+        <!--        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
@@ -126,12 +143,12 @@ if (isset($_POST['delete'])) {
             <div>
                 <?php include('menu_admin.php'); ?>
             </div>
-
+        <?php if($profil['role'] === 'member'); ?>
             <form action="members.php" method="POST" class="">
-                <div style="" >
+                <div style="">
                     <table style= "width: 1300px ; padding-left: 11em" class=" table-responsive " >
-                            <tbody  >
-                            <caption  class="caption" style="caption-side : top;text-align: center;font-size: 40px;font-weight: bold; ">Members </caption>
+                            
+                          <caption  class="caption" style="caption-side : top;text-align: center;font-size: 40px;font-weight: bold; ">Members </caption>
                         <tr class="colname">
 
                             <th>User Name</th>
@@ -151,7 +168,7 @@ if (isset($_POST['delete'])) {
                             $birthdate = $member['birthdate'];
                             $role = $member['role'];
                             $profil = get_user($user);
-                            //count_admin($members);
+                            
                             echo "
                    <tr>
                     
@@ -162,12 +179,15 @@ if (isset($_POST['delete'])) {
                     <td>$role</td>
     
                 ";
-                            echo"<td>";
-                            if (isset($profil['role']) AND $profil['role'] == 'admin') {
+                            echo"<td> ";
+                            if (isset($profil['role']) AND $profil['role'] == 'admin' ) {
                                 echo "<a href=edit.php?username=$name class='btn btn-primary'>Edit</a>
-                         <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#ConfirmModal'>
+                                    
+                                    
+                         <input type='checkbox' name='delete' class='btn btn-danger' value=$id data-toggle='modal' data-target='#ConfirmModal'>
+                             <input type='hidden' name='idUser' value= $idUser>
                 Delete
-            </button>";
+            ";
                             } else {
                                 echo"<a href=edit.php?username=$name class='btn btn-primary'>Edit</a></td>";
                             }
@@ -177,12 +197,11 @@ if (isset($_POST['delete'])) {
                         echo"</td>";
                         echo "</tr>";
                         ?>
+                       
                         </tbody>
-                    </table>
-
-                    <a  href=add.php class='btn btn-success' style="margin-top: 15px; margin-left: 965px">Add</a>
+                         
                     </div>
-
+                
                     <div class="modal fade" id="ConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -195,22 +214,28 @@ if (isset($_POST['delete'])) {
                                 <div class="modal-body">
                                     ARE YOU SURE YOU WANT TO DELETE ?
                                 </div>
-                                <div class="modal-footer">
+                                <div method="POST" class="modal-footer">
 
-                                    <input type="hidden" name="id" value="<?= $id ?>">
+                                    <input type="hidden" name="id" value="<?= $member['id'] ?>">
 
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancel"> CANCEL</button>
 
-                                    <button type="input" class="btn btn-danger" name="delete" id="delete" value="">DELETE</button>
+                                    <button type="submit" class="btn btn-danger" name="delete"  id="delete" valeur="<?php $idDel ?>" >DELETE</button>
 
-                                    <?php echo '</form>' ?>
+            
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </table>
+                    <a  href=add.php class='btn btn-success' style=" position:relative; margin-top: 15px; margin-left: 1030px">Add</a>
+                    </div>
+                </form>
+                    
                     <div class="underlay-photo"></div>
                     <div class="underlay-black"></div> 
-            </body>
+        </body>
 
 
         </html>
+a

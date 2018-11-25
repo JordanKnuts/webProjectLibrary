@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title> Menu</title>
+        <link href="styles.css" rel="stylesheet" type="text/css"/>
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css'>
         <style>
             body {margin:0;}
 
             ul {
                 list-style-type: none;
-                margin: 0%;
-                padding: 0%;
-                
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
                 background-color: #333;
                 background: transparent;
                 position: center;

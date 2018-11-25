@@ -33,15 +33,21 @@ if (isset($_POST['validate'])) {
         }
         if ($password !== $password_confirm) {
           $errors[] = "Les mots de passe doivent être identiques";
-          
           } 
-          
+        if (!check_unique_username($username)){
+          $errors[] = "L'username est déjà utilisé";
+        }
+        if (!check_unique_mail($email)){
+          $errors[] = "L'email est déjà utilisé";
+        }
+     
 
         if (!isset($errors)) {
 
             add_user($username, my_hash($password), $fullname, $email, $birthdate, $role);
             //var_dump(add_user($username, my_hash($password), $fullname, $email, $birthdate,$role));
             log_user($username);
+            check_unique($username, $email);
         }
     }
 }

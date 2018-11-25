@@ -114,7 +114,7 @@ if (!$profil) {
     <body  >
         <div>
             <?php
-            if (isset($profil['role']) AND $profil['role'] == "admin" || $profil['role'] == "manager") {
+            if (isset($profil['role']) AND $profil['role'] !== 'membre') {
                 include('menu_admin.php');
             } else {
                 include('menu_users.php');
