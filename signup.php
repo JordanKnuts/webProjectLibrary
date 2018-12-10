@@ -20,9 +20,11 @@ if (isset($_POST['validate'])) {
         $email = sanitize($_POST['email']);
         $username = sanitize($_POST['username']);
         $role = sanitize($_POST['role']);
+        
 
-
-
+        if(empty($birthdate)){
+            $birthdate=null;
+        }
         if (trim($username) == '') {
             $errors[] = "Le username est obligatoire";
         }
