@@ -1,10 +1,4 @@
-            add_user($username, $password, $fullname, $email, $birthdate,$role);
-            echo"YESaii";
-            /*log_user($username);*/
-=======
-            add_user($username, my_hash($password), $fullname, $email, $birthdate,$role);
-            //var_dump(add_user($username, my_hash($password), $fullname, $email, $birthdate,$role));
-            log_user($username);
+
 <?php
 require_once "functions.php";
 $pdo = connect();
