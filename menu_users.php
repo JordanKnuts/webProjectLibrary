@@ -2,7 +2,8 @@
 <html>
     <head>
         <title> Menu</title>
-    <link href="styles.css" rel="stylesheet" type="text/css"/>
+        <link href="styles.css" rel="stylesheet" type="text/css"/>
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css'>
         <style>
             body {margin:0;}
 
@@ -12,6 +13,7 @@
                 padding: 0;
                 overflow: hidden;
                 background-color: #333;
+                background: transparent;
                 position: center;
                 top: 0;
                 width: 100%;
@@ -36,15 +38,15 @@
             .active {
                 background-color: #4CAF50;
             }
-            </style>
+        </style>
     </head>
     <body>
         <ul class="menuhtml">
-    
-    <li><a href="profil.php">Home </a></li>
-    <li><a href="index.php">Log Out</a></li>
 
-</ul>
+            <li><a href="profil.php"><i class='fas fa-home' style='font-size:20px;color:white'></i> &nbsp Home </a></li>
+            <li><a href="logout.php"><i class="fas fa-sign-out-alt" style="font-size:20px;color:white"></i> &nbsp Log Out</a></li>
+
+        </ul>
 
     </body>
 </html>
